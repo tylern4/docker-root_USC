@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build Base Docker image
+      run : docker build -t uofscphysics/base -f build/base/Dockerfile build/base/.;
+    - name: Build python Docker image
+      run : docker build -t uofscphysics/python -f build/python/Dockerfile build/python/.;
+    - name: Build root Docker image
+      run : docker build -t uofscphysics/root -f build/root/Dockerfile build/root/.;
