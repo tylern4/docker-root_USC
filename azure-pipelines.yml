@@ -10,7 +10,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script: docker build -t uofscphysics/root -f build/root/Dockerfile build/root/.;
+  displayName: 'Build root'
 - script: |
-    pwd
     bash build.sh
   displayName: 'Run build script'
